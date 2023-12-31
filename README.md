@@ -36,7 +36,7 @@ git clone https://github.com/Abhishek4066/Task_Manager.git
 cd Task_Manager
 # open in your favorite editor, or
 mvnw spring-boot:run
-open http://localhost:8080 and TODO away!
+open http://localhost:8080
 ```
 
 ## Screenshots

@@ -1,0 +1,23 @@
+package com.example.task_Manager.controller;
+
+import org.springframework.stereotype.Controller;
+import com.example.task_Manager.service.TmService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class HomeController {
+
+    @Autowired
+    private TmService todoItemService;
+
+    @GetMapping("/")
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("todoItems", todoItemService.getAll());
+        return modelAndView;
+    }
+
+}

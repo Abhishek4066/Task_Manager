@@ -41,14 +41,15 @@ open http://localhost:8080 and TODO away!
 
 ## Screenshots
 
+- Spring Security
+  ![Spring Security](https://github.com/Abhishek4066/Task_Manager/blob/main/Screenshots/springsecurity.png)
+
+- Main Page
+  ![Main Page](https://github.com/Abhishek4066/Task_Manager/blob/main/Screenshots/main-page.png)
+
 - Add Todo Page
   ![Add Todo](https://github.com/Abhishek4066/Task_Manager/blob/main/Screenshots/addtodopage.png)
 
 - Edit Todo Page
   ![Edit Todo](https://github.com/Abhishek4066/Task_Manager/blob/main/Screenshots/edit-todopage.png)
 
-- Main Page
-  ![Main Page](https://github.com/Abhishek4066/Task_Manager/blob/main/Screenshots/main-page.png)
-
-- Spring Security
-  ![Spring Security](https://github.com/Abhishek4066/Task_Manager/blob/main/Screenshots/springsecurity.png)

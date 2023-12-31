@@ -5,6 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-outline-success {
+            color: #28a745;
+            border-color: #28a745;
+            transition: background-color 0.3s;
+        }
+
+        .btn-outline-success:hover {
+            color: #fff;
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .card {
+            background-color: #f4f4f4;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #3498db;
+        }
+
+        .text-danger {
+            margin-top: 5px;
+        }
+
+        .btn-success {
+            background-color: #2ecc71;
+            border-color: #2ecc71;
+            transition: background-color 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -18,10 +86,11 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Add a new Todo Item</h2>
-                    <form action="#" th:action="@{/todo}" th:object="${todo}" method="POST">
+                    <form action="#" th:action="@{/todo}" th:object="${todo}" method="POST" onsubmit="return validateForm()">
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <input class="form-control" type="text" th:field="*{description}" id="description" placeholder="Description">
+                            <div id="description-error" class="text-danger"></div>
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-plus-square-fill"></i> Add Todo
@@ -33,5 +102,19 @@
     </div>
 </div>
 <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
+<script>
+    function validateForm() {
+        var description = document.getElementById('description').value.trim();
+        var descriptionError = document.getElementById('description-error');
+
+        if (description === "") {
+            descriptionError.innerHTML = "Please enter a description.";
+            return false;
+        } else {
+            descriptionError.innerHTML = "";
+            return true;
+        }
+    }
+</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" />
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f4f4f4;
         }
 
         .container {
@@ -16,69 +16,85 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
         }
 
         h1 {
-            color: #495057;
+            color: #3498db; /* Updated color to a shade of blue */
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         hr {
-            border-color: #adb5bd;
+            border-color: #2ecc71;
+            margin: 20px 0;
         }
 
         .btn-success {
-            background-color: #198754;
-            border-color: #198754;
+            background-color: #2ecc71;
+            border-color: #2ecc71;
         }
 
         .btn-success:hover {
-            background-color: #147635;
-            border-color: #147635;
+            background-color: #27ae60;
+            border-color: #27ae60;
         }
 
         .btn-info {
-            background-color: #0dcaf0;
-            border-color: #0dcaf0;
+            background-color: #3498db;
+            border-color: #3498db;
         }
 
         .btn-info:hover {
-            background-color: #0a7b8c;
-            border-color: #0a7b8c;
+            background-color: #2980b9;
+            border-color: #2980b9;
         }
 
         .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
+            background-color: #e74c3c;
+            border-color: #e74c3c;
         }
 
         .btn-danger:hover {
-            background-color: #a71d2a;
-            border-color: #a71d2a;
+            background-color: #c0392b;
+            border-color: #c0392b;
         }
 
         .table {
-            background-color: #ffffff;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .table th, .table td {
             text-align: center;
+            vertical-align: middle;
         }
 
         .alert-success {
             background-color: #d4edda;
             color: #155724;
+            margin-bottom: 0;
+            border-radius: 8px;
         }
 
         .alert-warning {
             background-color: #fff3cd;
             color: #856404;
+            margin-bottom: 0;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <!-- Centered title -->
-    <h1 class="text-center mb-4">Task Management System</h1>
+    <h1 class="mb-4">Task Management System</h1>
     <hr />
 
     <!-- Create Todo button -->

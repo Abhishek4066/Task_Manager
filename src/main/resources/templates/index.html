@@ -5,48 +5,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #495057;
+        }
+
+        hr {
+            border-color: #adb5bd;
+        }
+
+        .btn-success {
+            background-color: #198754;
+            border-color: #198754;
+        }
+
+        .btn-success:hover {
+            background-color: #147635;
+            border-color: #147635;
+        }
+
+        .btn-info {
+            background-color: #0dcaf0;
+            border-color: #0dcaf0;
+        }
+
+        .btn-info:hover {
+            background-color: #0a7b8c;
+            border-color: #0a7b8c;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #a71d2a;
+            border-color: #a71d2a;
+        }
+
+        .table {
+            background-color: #ffffff;
+        }
+
+        .table th, .table td {
+            text-align: center;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <h1>Task Management Application</h1>
+    <!-- Centered title -->
+    <h1 class="text-center mb-4">Task Management System</h1>
     <hr />
 
+    <!-- Create Todo button -->
+    <p class="text-center">
+        <a class="btn btn-success" href="/create-todo">
+            <i class="bi bi-plus-square-fill"></i> Create a Todo
+        </a>
+    </p>
+
+    <!-- Todo table -->
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th>Actions</th>
-            <th>Id</th>
-            <th>Description</th>
+            <th>No</th>
+            <th>Todo Description</th>
             <th>Is Complete</th>
             <th>Created At</th>
             <th>Updated At</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${todoItems}" th:class="${item.isComplete} ? 'alert alert-success' : 'alert alert-warning'">
-            <td>
-                <div class="btn btn-group-sm" role="group">
-                    <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">
-                        <i class="bi bi-pencil-fill"></i> Edit</a>
-                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">
-                        <i class="bi bi-trash-fill"></i> Delete</a>
-                </div>
-            </td>
-            <td th:text="${item.id}"></td>
+        <tr th:each="item, rowStat : ${todoItems}" th:class="${item.isComplete} ? 'alert alert-success' : 'alert alert-warning'">
+            <!-- Row number -->
+            <td th:text="${rowStat.index + 1}"></td>
             <td th:text="${item.description}"></td>
             <td>
-                <span th:if="${item.isComplete} == true" th:text="Yes" />
-                <span th:unless="${item.isComplete} == true" th:text="No" />
+                <span th:if="${item.isComplete} == true" class="text-success" th:text="Yes"></span>
+                <span th:unless="${item.isComplete} == true" class="text-danger" th:text="No"></span>
             </td>
-            <td th:text="${item.createdAt}"></td>
-            <td th:text="${item.updatedAt}"></td>
+            <td th:text="${#dates.format(item.createdAt, 'dd/MM/yyyy HH:mm:ss')}"></td>
+            <td th:text="${#dates.format(item.updatedAt, 'dd/MM/yyyy HH:mm:ss')}"></td>
+            <td>
+                <!-- Edit and Delete buttons -->
+                <div class="btn btn-group-sm" role="group">
+                    <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">
+                        <i class="bi bi-pencil-fill"></i> Edit
+                    </a>
+                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">
+                        <i class="bi bi-trash-fill"></i> Delete
+                    </a>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
-
-    <p><a class="btn btn-outline-success" href="/create-todo">
-        <i class="bi bi-plus-square-fill"></i> Create a Todo</a>
-    </p>
 </div>
 <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
 </body>
